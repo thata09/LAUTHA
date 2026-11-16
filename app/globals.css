@@ -17,6 +17,11 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
 body {
   color: #21131B;
   background-color: #FFF0F6;

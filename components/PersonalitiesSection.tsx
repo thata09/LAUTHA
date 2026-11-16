@@ -1,17 +1,24 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { PERSONALITIES } from '@/lib/personalities';
+import { PersonalityId } from '@/lib/types';
 import PersonalityCard from './PersonalityCard';
-import { Sparkles, ArrowRight, HeartCrack } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { Sparkles, ArrowRight } from 'lucide-react';
 
-export default function PersonalitiesSection() {
-  const router = useRouter();
+interface PersonalitiesSectionProps {
+  onSelectPersonality?: (id: PersonalityId) => void;
+}
 
+export default function PersonalitiesSection({ onSelectPersonality }: PersonalitiesSectionProps) {
   const handleSelect = (p: typeof PERSONALITIES[0]) => {
-    router.push(`/chat?p=${p.id}`);
+    if (onSelectPersonality) {
+      onSelectPersonality(p.id);
+    }
+    const chatEl = document.getElementById('chat');
+    if (chatEl) {
+      chatEl.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -31,13 +38,13 @@ export default function PersonalitiesSection() {
             </p>
           </div>
 
-          <Link
-            href="/chat"
+          <a
+            href="#chat"
             className="inline-flex items-center gap-2 text-sm font-bold text-pink-600 hover:text-pink-800 transition-colors"
           >
             <span>Testar no chat agora</span>
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

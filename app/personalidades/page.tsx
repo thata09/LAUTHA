@@ -1,36 +1,22 @@
-import React from 'react';
-import PersonalitiesSection from '@/components/PersonalitiesSection';
-import Link from 'next/link';
-import { ArrowLeft, MessageCircleHeart } from 'lucide-react';
-import { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Personalidades do Ex — ExGPT',
-  description: 'Conheça as 7 personalidades do ExGPT: Debochado, Ciumento, Sofrido, Frio, Ressentido, Arrependido e Narcisista.',
-};
+import { useEffect } from 'react';
 
-export default function PersonalidadesPage() {
+export default function PersonalidadesRedirect() {
+  useEffect(() => {
+    window.location.replace('/#personalidades');
+  }, []);
+
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex flex-col flex-1">
-      <div className="flex items-center justify-between mb-6">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand-gray hover:text-pink-600 transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Voltar ao início</span>
-        </Link>
-
-        <Link
-          href="/chat"
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs sm:text-sm font-bold shadow-pink hover:scale-105 transition-all"
-        >
-          <MessageCircleHeart className="w-4 h-4" />
-          <span>Abrir Chat Geral</span>
-        </Link>
+    <div className="flex-1 flex items-center justify-center p-12">
+      <div className="text-center space-y-3">
+        <div className="w-12 h-12 mx-auto rounded-2xl bg-pink-500 animate-spin flex items-center justify-center text-white text-xl">
+          🎭
+        </div>
+        <p className="text-sm font-bold text-pink-600">
+          Redirecionando para as Personalidades no link único...
+        </p>
       </div>
-
-      <PersonalitiesSection />
     </div>
   );
 }

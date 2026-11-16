@@ -572,7 +572,7 @@ export async function generateExResponse(
     try {
       const messages = [
         { role: 'system', content: fullSystemInstruction },
-        ...history.slice(-4).map((h) => ({ role: h.role, content: h.content })),
+        ...history.slice(-14).map((h) => ({ role: h.role, content: h.content })),
         { role: 'user', content: message }
       ];
 
@@ -602,7 +602,47 @@ export async function generateExResponse(
     }
   }
 
-  // 4. MOTOR CONTEXTUAL INTELIGENTE: Responde com precisão cirúrgica ao que o usuário perguntou ou falou!
+  // 4. IA CONVERSACIONAL CONTÍNUA NATIVA (Sem necessidade de chave, com memória de contexto!)
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+
+    const conversationalMessages = [
+      { role: 'system', content: fullSystemInstruction },
+      ...history.slice(-14).map((h) => ({
+        role: h.role === 'assistant' ? 'assistant' : 'user',
+        content: h.content
+      })),
+      { role: 'user', content: message }
+    ];
+
+    const res = await fetch('https://text.pollinations.ai/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        messages: conversationalMessages,
+        model: 'openai',
+        temperature: 0.85
+      }),
+      signal: controller.signal
+    });
+
+    clearTimeout(timeout);
+
+    if (res.ok) {
+      let aiText = (await res.text()).trim();
+      if (aiText.startsWith('"') && aiText.endsWith('"') && aiText.length > 2) {
+        aiText = aiText.slice(1, -1);
+      }
+      if (aiText && aiText.length > 2 && !aiText.toLowerCase().includes('rate limit')) {
+        return { text: aiText, provider: 'continuous-ai' };
+      }
+    }
+  } catch (err) {
+    console.warn('IA online indisponível ou tempo esgotado, usando fallback contextual:', err);
+  }
+
+  // 5. MOTOR CONTEXTUAL INTELIGENTE: Responde com precisão cirúrgica ao que o usuário perguntou ou falou!
   const contextualReply = getSmartContextualResponse(message, personalityId);
   return {
     text: contextualReply,
@@ -693,6 +733,45 @@ export async function generateThreeResponses(
     } catch (err) {
       console.error('Erro no gerador OpenAI:', err);
     }
+  }
+
+  // 3. Gerador via IA Online Livre
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 7000);
+
+    const promptText = `${GENERATOR_SYSTEM_PROMPT}\n\nMensagem recebida: "${incomingMessage}"\nGere as 3 respostas em JSON válido:`;
+
+    const res = await fetch('https://text.pollinations.ai/openai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        messages: [{ role: 'user', content: promptText }],
+        response_format: { type: 'json_object' },
+        temperature: 0.85
+      }),
+      signal: controller.signal
+    });
+
+    clearTimeout(timeout);
+
+    if (res.ok) {
+      const data = await res.json();
+      const rawJson = data.choices?.[0]?.message?.content;
+      if (rawJson) {
+        const parsed = JSON.parse(rawJson);
+        if (parsed.debochada && parsed.venenosa && parsed.elegante) {
+          return {
+            debochada: parsed.debochada,
+            venenosa: parsed.venenosa,
+            elegante: parsed.elegante,
+            provider: 'conversational-ai'
+          };
+        }
+      }
+    }
+  } catch (err) {
+    // Continua para o gerador de contingência
   }
 
   // Gerador semântico de 3 respostas contextuais baseado no conteúdo enviado

@@ -5,7 +5,7 @@ import { MessageCircleHeart, ArrowRight, Sparkles, Heart } from 'lucide-react';
 
 export default function CtaSection() {
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section id="cta" className="py-20 relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl p-8 sm:p-14 bg-gradient-to-r from-[#FF2E88] via-[#FF4F9A] to-[#d81b60] text-white shadow-2xl overflow-hidden text-center">
           {/* BACKGROUND DECORATION */}
@@ -26,21 +26,21 @@ export default function CtaSection() {
             </p>
 
             <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link
-                href="/chat"
+              <a
+                href="#chat"
                 className="w-full sm:w-auto py-4 px-8 rounded-2xl bg-white text-pink-700 font-extrabold text-base shadow-xl hover:bg-pink-50 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2"
               >
                 <MessageCircleHeart className="w-5 h-5" />
                 <span>Conversar com meu ex agora</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
 
-              <Link
-                href="/gerador"
+              <a
+                href="#gerador"
                 className="w-full sm:w-auto py-4 px-7 rounded-2xl bg-white/20 hover:bg-white/30 text-white font-bold text-base backdrop-blur-md border border-white/30 transition-all flex items-center justify-center gap-2"
               >
                 <span>Gerador de 3 Respostas</span>
-              </Link>
+              </a>
             </div>
 
             <p className="text-xs text-pink-200 font-semibold pt-2">

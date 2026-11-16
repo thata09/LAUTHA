@@ -17,7 +17,7 @@ import {
 
 export default function Hero() {
   return (
-    <section className="relative pt-8 pb-16 sm:pt-14 sm:pb-24 overflow-hidden">
+    <section id="inicio" className="relative pt-8 pb-16 sm:pt-14 sm:pb-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* TEXTO HERO (COLUNA ESQUERDA) */}
@@ -45,20 +45,21 @@ export default function Hero() {
 
             {/* BOTÕES DE CTA */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
-              <Link
-                href="/chat"
+              <a
+                href="#chat"
                 className="w-full sm:w-auto py-4 px-8 rounded-2xl bg-gradient-to-r from-[#FF4F9A] via-[#FF2E88] to-rose-600 text-white font-extrabold text-base shadow-pink hover:shadow-neon hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2.5 group"
               >
                 <MessageCircleHeart className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                 <span>Conversar com meu ex</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
 
               <a
-                href="#como-funciona"
+                href="#gerador"
                 className="w-full sm:w-auto py-4 px-7 rounded-2xl glass-card hover:bg-white text-[#21131B] font-bold text-base border border-pink-200 shadow-sm hover:shadow-pink transition-all flex items-center justify-center gap-2"
               >
-                <span>Ver como funciona</span>
+                <Flame className="w-4 h-4 text-pink-500" />
+                <span>O Que Ele Responderia?</span>
               </a>
             </div>
 

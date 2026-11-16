@@ -51,7 +51,7 @@ export default function ChatInterface({ initialPersonalityId = 'debochado' }: Ch
   const [loading, setLoading] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [messageCount, setMessageCount] = useState(2);
-  const maxFreeMessages = 25;
+  const maxFreeMessages = 9999;
 
   const [selectorOpen, setSelectorOpen] = useState(false);
   const [shareModalOpen, setShareModalOpen] = useState(false);
@@ -135,7 +135,7 @@ export default function ChatInterface({ initialPersonalityId = 'debochado' }: Ch
           message: text,
           personalityId: personality.id,
           apiKey: customKey,
-          history: newMessages.slice(-6).map((m) => ({
+          history: newMessages.slice(-16).map((m) => ({
             role: m.sender === 'user' ? 'user' : 'assistant',
             content: m.text
           }))
@@ -298,13 +298,10 @@ export default function ChatInterface({ initialPersonalityId = 'debochado' }: Ch
           </span>
         </div>
 
-        <button
-          onClick={() => setPremiumModalOpen(true)}
-          className="flex items-center gap-1 hover:text-pink-600 transition-colors"
-        >
-          <span>{Math.max(0, maxFreeMessages - messageCount)}/{maxFreeMessages} msgs grátis</span>
-          <Crown className="w-3 h-3 text-amber-500" />
-        </button>
+        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold border border-emerald-200">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+          <span>IA Contínua com Memória Ativa</span>
+        </div>
       </div>
 
       {/* 2. ÁREA DE MENSAGENS COM SCROLL */}

@@ -47,7 +47,7 @@ export default function ViralPreviewSection() {
   };
 
   return (
-    <section className="py-20 relative bg-gradient-to-b from-transparent via-pink-100/40 to-transparent">
+    <section id="viral" className="py-20 relative bg-gradient-to-b from-transparent via-pink-100/40 to-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-pink-100 text-pink-700 mb-3 border border-pink-200">
@@ -123,13 +123,13 @@ export default function ViralPreviewSection() {
         </div>
 
         <div className="text-center">
-          <Link
-            href="/gerador"
+          <a
+            href="#gerador"
             className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-white hover:bg-pink-50 text-pink-700 font-extrabold text-sm border-2 border-pink-300 shadow-sm transition-all"
           >
             <span>Experimentar gerador de 3 respostas</span>
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </a>
         </div>
       </div>
 

@@ -45,29 +45,29 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm font-medium text-brand-gray">
               <li>
-                <Link href="/chat" className="hover:text-pink-600 transition-colors">
+                <a href="#chat" className="hover:text-pink-600 transition-colors">
                   Chat com Ex Virtual
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/gerador" className="hover:text-pink-600 transition-colors">
+                <a href="#gerador" className="hover:text-pink-600 transition-colors">
                   O Que Meu Ex Responderia? (3 Opções)
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/personalidades" className="hover:text-pink-600 transition-colors">
+                <a href="#personalidades" className="hover:text-pink-600 transition-colors">
                   Todas as 7 Personalidades
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/#como-funciona" className="hover:text-pink-600 transition-colors">
+                <a href="#como-funciona" className="hover:text-pink-600 transition-colors">
                   Como Funciona o ExGPT
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/#faq" className="hover:text-pink-600 transition-colors">
+                <a href="#faq" className="hover:text-pink-600 transition-colors">
                   Perguntas Frequentes
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -79,29 +79,29 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm font-medium text-brand-gray">
               <li>
-                <Link href="/chat?p=debochado" className="hover:text-pink-600 transition-colors flex items-center gap-1.5">
+                <a href="#chat" className="hover:text-pink-600 transition-colors flex items-center gap-1.5">
                   <span>💅 Ex Debochado</span>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/chat?p=ciumento" className="hover:text-pink-600 transition-colors flex items-center gap-1.5">
+                <a href="#chat" className="hover:text-pink-600 transition-colors flex items-center gap-1.5">
                   <span>👀 Ex Ciumento</span>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/chat?p=sofrido" className="hover:text-pink-600 transition-colors flex items-center gap-1.5">
+                <a href="#chat" className="hover:text-pink-600 transition-colors flex items-center gap-1.5">
                   <span>🥺 Ex Sofrido</span>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/chat?p=narcisista" className="hover:text-pink-600 transition-colors flex items-center gap-1.5">
+                <a href="#chat" className="hover:text-pink-600 transition-colors flex items-center gap-1.5">
                   <span>😎 Ex Narcisista (Paródia)</span>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/chat?p=frio" className="hover:text-pink-600 transition-colors flex items-center gap-1.5">
+                <a href="#chat" className="hover:text-pink-600 transition-colors flex items-center gap-1.5">
                   <span>🧊 Ex Frio</span>
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
